@@ -1,58 +1,87 @@
 package main
 
 import (
+	"encoding/base64"
+	"encoding/csv"
+	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
-	"strconv"
-
-	"github.com/gin-gonic/gin"
+	"strings"
 )
 
-// We gonna create a function that present the api
-func home(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"output":  nil,
-		"message": "Welcome to the home page",
-		"status":  200,
-	})
+type Document struct {
+	Filename  string `json:"filename"`
+	Content   string `json:"content"`
+	Extension string `json:"extension"`
+	Uid       string `json:"uid"`
 }
 
-// create the function that handle the request GET /ping
-func pong(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"message": "pong",
-	})
-}
+// decoding b64 encoded document
+func decodeb64(Content string) []byte {
 
-// creation of function tha handle arguments in the url
-func giveNumber(c *gin.Context) {
-	id := c.Param("id")
-	response := ""
-	// check if id is a number
-	if id, err := strconv.Atoi(id); err == nil {
-		response = fmt.Sprintf("The number is %d", id)
-	} else {
-		response = "The id is not a number"
+	// decode base64 string
+	decoded, err := base64.StdEncoding.DecodeString(Content)
+	if err != nil {
+		log.Fatal(err)
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"output": response,
-	})
+	return decoded
+}
+
+func read_csv_from_bytes(decoded []byte) ([][]string, error) {
+	// read csv from b64
+	csvReader := csv.NewReader(strings.NewReader(string(decoded)))
+
+	// read all the records
+	records, err := csvReader.ReadAll()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return records, err
+}
+
+// curl -X GET "http://localhost:8080/person/create" -d '{"name":"John", "age":30}'
+func converter(w http.ResponseWriter, r *http.Request) {
+	// Declare a new Document struct.
+	var d Document
+
+	// Try to decode the request body into the struct. If there is an error,
+	// respond to the client with the error message and a 400 status code.
+	err := json.NewDecoder(r.Body).Decode(&d)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// decode base64 string
+	decoded, err := base64.StdEncoding.DecodeString(d.Content)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// read csv from b64
+	records, err := read_csv_from_bytes(decoded)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Do something with the Person struct...
+	w.Write([]byte(fmt.Sprintf(records[0][0])))
+}
+
+func homepage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Homepage Endpoint Hit")
 }
 
 func main() {
-	r := gin.Default()
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", homepage)
+	mux.HandleFunc("/converter", converter)
 
-	// create a new handler function that will respond to the request
-	r.GET("/", home)
+	//mux.HandleFunc("/person/list", personList)
 
-	// create a new handler function that will respond to the request
-	r.GET("/ping", pong)
-
-	// function that give a number given in the url
-	r.GET("/print/:id", giveNumber)
-
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
-
-	// To start the server, run the following command:
-	// go run main.go
+	err := http.ListenAndServe(":8080", mux)
+	log.Fatal(err)
 }
