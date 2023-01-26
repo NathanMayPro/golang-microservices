@@ -18,14 +18,13 @@ type Document struct {
 
 // decoding b64 encoded document
 func decodeb64(Content string) []byte {
-
 	// decode base64 string
 	decoded, err := base64.StdEncoding.DecodeString(Content)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if decoded == nil {
-		log.Fatal("decoded is nil")
+	if decoded == nil || len(decoded) == 0 {
+		log.Fatal("Something went wrong while decoding base64 string.")
 	}
 	return decoded
 }
@@ -34,10 +33,7 @@ func homepage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Homepage Endpoint Hit")
 }
 
-// save file
 func save_file(decoded []byte, filename string, extension string, path string) error {
-	// save file
-
 	// create file
 	file, err := os.Create(path + filename + "." + extension)
 	if err != nil {
@@ -118,7 +114,7 @@ func main() {
 	mux.HandleFunc("/save", save)
 
 	// log activity
-	fmt.Printf("Server started on port 8080")
+	fmt.Printf("Server started on port 8080\n")
 
 	//mux.HandleFunc("/person/list", personList)
 
