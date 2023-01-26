@@ -2,12 +2,11 @@ package main
 
 import (
 	"encoding/base64"
-	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
+	"os"
 )
 
 type Document struct {
@@ -25,24 +24,51 @@ func decodeb64(Content string) []byte {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if decoded == nil {
+		log.Fatal("decoded is nil")
+	}
 	return decoded
 }
 
-func read_csv_from_bytes(decoded []byte) ([][]string, error) {
-	// read csv from b64
-	csvReader := csv.NewReader(strings.NewReader(string(decoded)))
+func homepage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Homepage Endpoint Hit")
+}
 
-	// read all the records
-	records, err := csvReader.ReadAll()
+// save file
+func save_file(decoded []byte, filename string, extension string, path string) error {
+	// save file
+
+	// create file
+	file, err := os.Create(path + filename + "." + extension)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	return records, err
+	// write to file
+	_, err = file.Write(decoded)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// close file
+	err = file.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return err
 }
 
-// curl -X GET "http://localhost:8080/person/create" -d '{"name":"John", "age":30}'
-func converter(w http.ResponseWriter, r *http.Request) {
+func save(w http.ResponseWriter, r *http.Request) {
+
+	// check if there is a path as query parameter
+	path := r.URL.Query().Get("path") // http://localhost:8080/save?path=/home/username
+
+	// if path is not empty
+	if path == "" {
+		log.Fatal("path is empty.")
+	}
+
 	// Declare a new Document struct.
 	var d Document
 
@@ -60,25 +86,39 @@ func converter(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	// read csv from b64
-	records, err := read_csv_from_bytes(decoded)
-
+	// save file
+	err = save_file(decoded, d.Filename, d.Extension, path)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Do something with the Person struct...
-	w.Write([]byte(fmt.Sprintf(records[0][0])))
+	fmt.Printf("Log: save endpoint hit %v", path)
+
 }
 
-func homepage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Homepage Endpoint Hit")
+func retrieve(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println("retrieve endpoint hit")
+	// check if there is a path as query parameter
+	path := r.URL.Query().Get("path") // http://localhost:8080/retrieve?path=/home/username
+
+	// if path is not empty
+	if path == "" {
+		log.Fatal("path is empty.")
+	}
+
+	// open file using READ & WRITE permission
+	http.ServeFile(w, r, path)
 }
 
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", homepage)
-	mux.HandleFunc("/converter", converter)
+	mux.HandleFunc("/retrieve", retrieve)
+	mux.HandleFunc("/save", save)
+
+	// log activity
+	fmt.Printf("Server started on port 8080")
 
 	//mux.HandleFunc("/person/list", personList)
 
