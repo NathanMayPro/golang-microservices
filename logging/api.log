@@ -128,3 +128,565 @@ created by net/http.(*Server).Serve
 2023/01/26 16:00:43 save endpoint done [::1]:53538
 2023/01/26 16:00:43 retrieve endpoint hit [::1]:53539
 2023/01/26 16:00:43 retrieve endpoint done [::1]:53539
+2023/01/26 16:16:41 Server started on port 8080
+2023/01/26 16:16:52 save endpoint hit [::1]:53690
+2023/01/26 16:16:52 save endpoint done [::1]:53690
+2023/01/26 16:16:52 retrieve endpoint hit [::1]:53691
+2023/01/26 16:16:52 retrieve endpoint done [::1]:53691
+2023/01/26 16:18:02 endpoint:homepage hit [::1]:53710
+2023/01/26 16:27:56 retrieve endpoint hit [::1]:53742
+2023/01/26 16:27:56 failed to check if file exists: stat ./data_mart/test-document/fail.pdf: no such file or directory
+2023/01/26 16:27:56 http: panic serving [::1]:53742: stat ./data_mart/test-document/fail.pdf: no such file or directory
+goroutine 24 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1029bf3c0, 0x1400011cf60})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x1029f6810, 0x140001de000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x1400005d978?, {0x1029f6810?, 0x140001de000?}, 0x14000682680?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+main.responseMiddleware.func1({0x1029f6810, 0x140001de000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:136 +0x54
+net/http.HandlerFunc.ServeHTTP(0x1400005dad8?, {0x1029f6810?, 0x140001de000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400001e20e?, {0x1029f6810, 0x140001de000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011cde0?}, {0x1029f6810, 0x140001de000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013a320, {0x1029f6c60, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:28:20 retrieve endpoint hit [::1]:53743
+2023/01/26 16:28:20 failed to check if file exists: stat ./data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 16:28:20 http: panic serving [::1]:53743: stat ./data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 26 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1029bf3c0, 0x1400011d2f0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x1029f6810, 0x140001de0e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x1400005d978?, {0x1029f6810?, 0x140001de0e0?}, 0x14000682680?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+main.responseMiddleware.func1({0x1029f6810, 0x140001de0e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:136 +0x54
+net/http.HandlerFunc.ServeHTTP(0x1400005dad8?, {0x1029f6810?, 0x140001de0e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000200fe?, {0x1029f6810, 0x140001de0e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011d200?}, {0x1029f6810, 0x140001de0e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aaa0, {0x1029f6c60, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:28:51 retrieve endpoint hit [::1]:53745
+2023/01/26 16:28:51 failed to check if file exists: stat /data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 16:28:51 http: panic serving [::1]:53745: stat /data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 28 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1029bf3c0, 0x1400011d4a0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x1029f6810, 0x140001de1c0}, 0x1400018a200)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x1400005d978?, {0x1029f6810?, 0x140001de1c0?}, 0x14000682680?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+main.responseMiddleware.func1({0x1029f6810, 0x140001de1c0}, 0x1400018a200)
+	/Users/maynathan/Documents/code/language/go/api/main.go:136 +0x54
+net/http.HandlerFunc.ServeHTTP(0x1400005dad8?, {0x1029f6810?, 0x140001de1c0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000201ee?, {0x1029f6810, 0x140001de1c0}, 0x1400018a200)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011d3b0?}, {0x1029f6810, 0x140001de1c0}, 0x1400018a200)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013ab40, {0x1029f6c60, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:29:00 save endpoint hit [::1]:53746
+2023/01/26 16:29:00 save endpoint done [::1]:53746
+2023/01/26 16:29:00 retrieve endpoint hit [::1]:53747
+2023/01/26 16:29:00 retrieve endpoint done [::1]:53747
+2023/01/26 16:31:29 retrieve endpoint hit [::1]:53766
+2023/01/26 16:31:29 failed to check if file exists: stat /data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 16:31:29 http: panic serving [::1]:53766: stat /data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 38 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1029bf3c0, 0x140005e41b0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x1029f6810, 0x140000ce000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x102b6a940?, {0x1029f6810?, 0x140000ce000?}, 0x14000682680?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+main.responseMiddleware.func1({0x1029f6810, 0x140000ce000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:136 +0x54
+net/http.HandlerFunc.ServeHTTP(0x1400005dad8?, {0x1029f6810?, 0x140000ce000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400002005e?, {0x1029f6810, 0x140000ce000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x140005e4090?}, {0x1029f6810, 0x140000ce000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013a320, {0x1029f6c60, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:32:15 retrieve endpoint hit [::1]:53767
+2023/01/26 16:32:15 failed to check if file exists: stat './data_mart/test-document/test-large-size.pdf': no such file or directory
+2023/01/26 16:32:15 http: panic serving [::1]:53767: stat './data_mart/test-document/test-large-size.pdf': no such file or directory
+goroutine 31 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1029bf3c0, 0x1400011d0e0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x1029f6810, 0x14000192000}, 0x140000ac000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x140000cb978?, {0x1029f6810?, 0x14000192000?}, 0x14000682820?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+main.responseMiddleware.func1({0x1029f6810, 0x14000192000}, 0x140000ac000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:136 +0x54
+net/http.HandlerFunc.ServeHTTP(0x140000cbad8?, {0x1029f6810?, 0x14000192000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400014a1ee?, {0x1029f6810, 0x14000192000}, 0x140000ac000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011ce70?}, {0x1029f6810, 0x14000192000}, 0x140000ac000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x14000072000, {0x1029f6c60, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:32:36 retrieve endpoint hit [::1]:53772
+2023/01/26 16:32:36 retrieve endpoint done [::1]:53772
+2023/01/26 16:34:01 retrieve endpoint hit [::1]:53797
+2023/01/26 16:34:01 failed to check if file exists: stat './data_mart/test-document/test-large-size.pdf': no such file or directory
+2023/01/26 16:34:01 http: panic serving [::1]:53797: stat './data_mart/test-document/test-large-size.pdf': no such file or directory
+goroutine 67 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1029bf3c0, 0x1400011cf60})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x1029f6810, 0x140001da000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x102b6a940?, {0x1029f6810?, 0x140001da000?}, 0x14000682820?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+main.responseMiddleware.func1({0x1029f6810, 0x140001da000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:136 +0x54
+net/http.HandlerFunc.ServeHTTP(0x1400005dad8?, {0x1029f6810?, 0x140001da000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400014a1ee?, {0x1029f6810, 0x140001da000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011cde0?}, {0x1029f6810, 0x140001da000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x14000072000, {0x1029f6c60, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:36:33 retrieve endpoint hit [::1]:53832
+2023/01/26 16:36:33 failed to path is empty.: <nil>
+2023/01/26 16:37:41 retrieve endpoint hit [::1]:53843
+2023/01/26 16:37:41 failed to path is empty.: <nil>
+2023/01/26 16:37:46 Server started on port 8080
+2023/01/26 16:37:49 retrieve endpoint hit [::1]:53849
+2023/01/26 16:48:28 Server started on port 8080
+2023/01/26 16:48:30 retrieve endpoint hit [::1]:53971
+2023/01/26 16:49:44 Server started on port 8080
+2023/01/26 16:49:46 retrieve endpoint hit [::1]:53994
+2023/01/26 16:49:46 http: panic serving [::1]:53994: interface conversion: interface {} is nil, not int
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1031dad00, 0x1400011f020})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x103216810, 0x14000194000}, 0x1400018c000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:143 +0x2a0
+net/http.HandlerFunc.ServeHTTP(0x14000147ad8?, {0x103216810?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ae?, {0x103216810, 0x14000194000}, 0x1400018c000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011ee70?}, {0x103216810, 0x14000194000}, 0x1400018c000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aa00, {0x103216c60, 0x1400011ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:50:10 retrieve endpoint hit [::1]:54004
+2023/01/26 16:50:10 http: panic serving [::1]:54004: interface conversion: interface {} is nil, not int
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1031dad00, 0x1400011f230})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x103216810, 0x140001940e0}, 0x1400018c100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:143 +0x2a0
+net/http.HandlerFunc.ServeHTTP(0x1400005fad8?, {0x103216810?, 0x140001940e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ce?, {0x103216810, 0x140001940e0}, 0x1400018c100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011f0e0?}, {0x103216810, 0x140001940e0}, 0x1400018c100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aaa0, {0x103216c60, 0x1400011ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:51:08 retrieve endpoint hit [::1]:54016
+2023/01/26 16:51:08 http: panic serving [::1]:54016: interface conversion: interface {} is nil, not int
+goroutine 23 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1031dad00, 0x1400011f440})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x103216810, 0x140001941c0}, 0x1400018c200)
+	/Users/maynathan/Documents/code/language/go/api/main.go:143 +0x2a0
+net/http.HandlerFunc.ServeHTTP(0x1400005fad8?, {0x103216810?, 0x140001941c0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ee?, {0x103216810, 0x140001941c0}, 0x1400018c200)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011f2f0?}, {0x103216810, 0x140001941c0}, 0x1400018c200)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013ab40, {0x103216c60, 0x1400011ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:51:13 Server started on port 8080
+2023/01/26 16:51:15 retrieve endpoint hit [::1]:54023
+2023/01/26 16:51:15 http: panic serving [::1]:54023: interface conversion: interface {} is nil, not int
+goroutine 4 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1009aad00, 0x1400007f020})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x1009e67f0, 0x14000164000}, 0x1400015c000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:143 +0x248
+net/http.HandlerFunc.ServeHTTP(0x14000123ad8?, {0x1009e67f0?, 0x14000164000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400002220e?, {0x1009e67f0, 0x14000164000}, 0x1400015c000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400007ee70?}, {0x1009e67f0, 0x14000164000}, 0x1400015c000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x14000116a00, {0x1009e6c40, 0x1400007ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:53:05 Server started on port 8080
+2023/01/26 16:53:07 retrieve endpoint hit [::1]:54047
+2023/01/26 16:53:07 http: panic serving [::1]:54047: interface conversion: interface {} is nil, not int
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1049f2d00, 0x1400011f080})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x104a2e7f0, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:146 +0x248
+net/http.HandlerFunc.ServeHTTP(0x14000147ad8?, {0x104a2e7f0?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ae?, {0x104a2e7f0, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011ee70?}, {0x104a2e7f0, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aa00, {0x104a2ec40, 0x1400011ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:53:42 retrieve endpoint hit [::1]:54058
+2023/01/26 16:53:42 http: panic serving [::1]:54058: interface conversion: interface {} is nil, not int
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1049f2d00, 0x1400011f2f0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x104a2e7f0, 0x140001940e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:146 +0x248
+net/http.HandlerFunc.ServeHTTP(0x1400005fad8?, {0x104a2e7f0?, 0x140001940e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ce?, {0x104a2e7f0, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011f140?}, {0x104a2e7f0, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aaa0, {0x104a2ec40, 0x1400011ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:53:46 Server started on port 8080
+2023/01/26 16:53:48 retrieve endpoint hit [::1]:54064
+2023/01/26 16:53:48 http: panic serving [::1]:54064: interface conversion: interface {} is nil, not int
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x102472d00, 0x14000117080})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x1024ae7f0, 0x1400018c000}, 0x14000182000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:146 +0x248
+net/http.HandlerFunc.ServeHTTP(0x1400013fad8?, {0x1024ae7f0?, 0x1400018c000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001401ae?, {0x1024ae7f0, 0x1400018c000}, 0x14000182000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x14000116e70?}, {0x1024ae7f0, 0x1400018c000}, 0x14000182000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x14000132a00, {0x1024aec40, 0x14000116d80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:54:55 Server started on port 8080
+2023/01/26 16:54:57 retrieve endpoint hit [::1]:54080
+2023/01/26 16:54:57 http: panic serving [::1]:54080: interface conversion: interface {} is nil, not string
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x104cced00, 0x1400009d080})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x104d0a7f0?, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:152 +0x250
+net/http.HandlerFunc.ServeHTTP(0x140000c7ad8?, {0x104d0a7f0?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000c81ae?, {0x104d0a7f0, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400009ce70?}, {0x104d0a7f0, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000baa00, {0x104d0ac40, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:55:33 retrieve endpoint hit [::1]:54089
+2023/01/26 16:55:33 http: panic serving [::1]:54089: interface conversion: interface {} is nil, not string
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x104cced00, 0x1400009d2f0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x104d0a7f0?, 0x140001940e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:152 +0x250
+net/http.HandlerFunc.ServeHTTP(0x1400005fad8?, {0x104d0a7f0?, 0x140001940e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000c81ce?, {0x104d0a7f0, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400009d140?}, {0x104d0a7f0, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000baaa0, {0x104d0ac40, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:55:37 Server started on port 8080
+2023/01/26 16:55:40 retrieve endpoint hit [::1]:54095
+2023/01/26 16:55:40 http: panic serving [::1]:54095: interface conversion: interface {} is nil, not string
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1031ba0c0, 0x1400011eff0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x1031f4970?, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:152 +0x250
+net/http.HandlerFunc.ServeHTTP(0x14000147ad8?, {0x1031f4970?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ae?, {0x1031f4970, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011ee70?}, {0x1031f4970, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aa00, {0x1031f4d60, 0x1400011ed80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:55:58 Server started on port 8080
+2023/01/26 16:56:00 retrieve endpoint hit [::1]:54102
+2023/01/26 16:56:00 http: panic serving [::1]:54102: interface conversion: interface {} is nil, not string
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x100f5a0c0, 0x1400009cff0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x100f94970?, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:153 +0x250
+net/http.HandlerFunc.ServeHTTP(0x140000c7ad8?, {0x100f94970?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000c81ae?, {0x100f94970, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400009ce70?}, {0x100f94970, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000baa00, {0x100f94d60, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:56:07 retrieve endpoint hit [::1]:54107
+2023/01/26 16:56:07 http: panic serving [::1]:54107: interface conversion: interface {} is nil, not string
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x100f5a0c0, 0x1400009d1d0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x100f94970?, 0x140001940e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:153 +0x250
+net/http.HandlerFunc.ServeHTTP(0x1400005fad8?, {0x100f94970?, 0x140001940e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000c81ce?, {0x100f94970, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400009d0b0?}, {0x100f94970, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000baaa0, {0x100f94d60, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:56:25 retrieve endpoint hit [::1]:54115
+2023/01/26 16:56:25 http: panic serving [::1]:54115: interface conversion: interface {} is nil, not string
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x100f5a0c0, 0x140001061e0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x100f94970?, 0x1400012e000}, 0x14000122000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:153 +0x250
+net/http.HandlerFunc.ServeHTTP(0x1400005aad8?, {0x100f94970?, 0x1400012e000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400012400e?, {0x100f94970, 0x1400012e000}, 0x14000122000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x14000106090?}, {0x100f94970, 0x1400012e000}, 0x14000122000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400010a000, {0x100f94d60, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:56:54 retrieve endpoint hit [::1]:54130
+2023/01/26 16:56:54 http: panic serving [::1]:54130: interface conversion: interface {} is nil, not string
+goroutine 36 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x100f5a0c0, 0x140001063c0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x100f94970?, 0x1400012e0e0}, 0x14000122100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:153 +0x250
+net/http.HandlerFunc.ServeHTTP(0x1400005aad8?, {0x100f94970?, 0x1400012e0e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400012402e?, {0x100f94970, 0x1400012e0e0}, 0x14000122100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x140001062a0?}, {0x100f94970, 0x1400012e0e0}, 0x14000122100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400010a0a0, {0x100f94d60, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:56:59 Server started on port 8080
+2023/01/26 16:57:01 retrieve endpoint hit [::1]:54136
+2023/01/26 16:57:01 http: panic serving [::1]:54136: interface conversion: interface {} is nil, not string
+goroutine 35 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x10307e0c0, 0x14000114f90})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x1030b8950?, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:152 +0x250
+net/http.HandlerFunc.ServeHTTP(0x14000147ad8?, {0x1030b8950?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140001481ae?, {0x1030b8950, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x14000114e70?}, {0x1030b8950, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aa00, {0x1030b8d40, 0x14000114d80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:58:01 Server started on port 8080
+2023/01/26 16:58:02 retrieve endpoint hit [::1]:54155
+2023/01/26 16:58:33 retrieve endpoint hit [::1]:54171
+2023/01/26 16:58:45 Server started on port 8080
+2023/01/26 16:58:47 retrieve endpoint hit [::1]:54182
+2023/01/26 16:59:43 retrieve endpoint hit [::1]:54207
+2023/01/26 16:59:51 Server started on port 8080
+2023/01/26 16:59:54 retrieve endpoint hit [::1]:54214
+2023/01/26 17:00:46 Server started on port 8080
+2023/01/26 17:00:50 retrieve endpoint hit [::1]:54239
+2023/01/26 17:01:46 Server started on port 8080
+2023/01/26 17:01:48 retrieve endpoint hit [::1]:54261
+2023/01/26 17:02:00 retrieve endpoint hit [::1]:54271
+2023/01/26 17:02:10 Server started on port 8080
+2023/01/26 17:02:12 retrieve endpoint hit [::1]:54282
+2023/01/26 17:56:27 Server started on port 8080
+2023/01/26 17:56:30 retrieve endpoint hit [::1]:54440
+2023/01/26 17:56:30 endpoint:homepage hit [::1]:54440
+2023/01/26 17:57:21 Server started on port 8080
+2023/01/26 17:57:35 Server started on port 8080
+2023/01/26 17:57:37 retrieve endpoint hit [::1]:54468
+2023/01/26 17:57:37 endpoint:homepage hit [::1]:54468
+2023/01/26 17:58:13 Server started on port 8080
+2023/01/26 17:58:16 retrieve endpoint hit [::1]:54485
+2023/01/26 17:58:16 endpoint:homepage hit [::1]:54485
+2023/01/26 17:58:39 Server started on port 8080
+2023/01/26 17:58:42 retrieve endpoint hit [::1]:54500
+2023/01/26 17:58:42 endpoint:homepage hit [::1]:54500
+2023/01/26 17:58:52 Server started on port 8080
+2023/01/26 17:58:54 retrieve endpoint hit [::1]:54510
+2023/01/26 17:58:54 endpoint:homepage hit [::1]:54510
+2023/01/26 17:59:55 Server started on port 8080
+2023/01/26 17:59:57 retrieve endpoint hit [::1]:54526
+2023/01/26 17:59:57 endpoint:homepage hit [::1]:54526
+2023/01/26 18:01:15 Server started on port 8080
+2023/01/26 18:01:17 retrieve endpoint hit [::1]:54556
+2023/01/26 18:09:56 Server started on port 8080
+2023/01/26 18:09:58 retrieve endpoint hit [::1]:54668
+2023/01/26 18:15:01 retrieve endpoint hit [::1]:54722
+2023/01/26 18:15:12 retrieve endpoint hit [::1]:54726
+2023/01/26 18:15:48 Server started on port 8080
+2023/01/26 18:15:49 retrieve endpoint hit [::1]:54738
+2023/01/26 18:15:49 http: panic serving [::1]:54738: interface conversion: interface {} is nil, not int
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x10252e0c0, 0x1400009cff0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x102568990, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:150 +0x400
+net/http.HandlerFunc.ServeHTTP(0x140000c7ad8?, {0x102568990?, 0x14000194000?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000c81ae?, {0x102568990, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400009ce70?}, {0x102568990, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000baa00, {0x102568d80, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 18:15:58 retrieve endpoint hit [::1]:54745
+2023/01/26 18:15:58 http: panic serving [::1]:54745: interface conversion: interface {} is nil, not int
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x10252e0c0, 0x1400009d1d0})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.responseMiddleware.func1({0x102568990, 0x140001940e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:150 +0x400
+net/http.HandlerFunc.ServeHTTP(0x1400005fad8?, {0x102568990?, 0x140001940e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x140000c81ce?, {0x102568990, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400009d0b0?}, {0x102568990, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000baaa0, {0x102568d80, 0x1400009cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 19:39:16 Server started on port 8080
+2023/01/26 19:39:23 retrieve endpoint hit [::1]:55122
