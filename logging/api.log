@@ -1,0 +1,130 @@
+2023/01/26 15:40:27 Server started on port 8080
+2023/01/26 15:40:46 save endpoint hit [::1]:53094
+2023/01/26 15:40:46 retrieve endpoint hit [::1]:53095
+2023/01/26 15:49:31 Server started on port 8080
+2023/01/26 15:49:34 save endpoint hit [::1]:53279
+2023/01/26 15:49:34 retrieve endpoint hit [::1]:53280
+2023/01/26 15:51:48 Server started on port 8080
+2023/01/26 15:51:55 save endpoint hit [::1]:53333
+2023/01/26 15:51:55 save endpoint done [::1]:53333
+2023/01/26 15:51:55 retrieve endpoint hit [::1]:53334
+2023/01/26 15:51:55 retrieve endpoint done [::1]:53334
+2023/01/26 15:52:11 save endpoint hit [::1]:53340
+2023/01/26 15:52:12 save endpoint done [::1]:53340
+2023/01/26 15:52:12 retrieve endpoint hit [::1]:53341
+2023/01/26 15:52:12 retrieve endpoint done [::1]:53341
+2023/01/26 15:52:53 save endpoint hit [::1]:53356
+2023/01/26 15:52:53 save endpoint done [::1]:53356
+2023/01/26 15:52:53 retrieve endpoint hit [::1]:53357
+2023/01/26 15:52:53 retrieve endpoint done [::1]:53357
+2023/01/26 15:54:30 save endpoint hit [::1]:53382
+2023/01/26 15:54:30 failed to create file: open ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 15:54:30 http: panic serving [::1]:53382: open ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 13 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1010072c0, 0x140000b6000})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:108
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:114
+main.save_file({0x14002c8c000, 0x607e78, 0x607e78}, {0x14000130340?, 0x140001e29c8?}, {0x14000130338?, 0x1011b2940?}, {0x14000136010?, 0x140001e2a78?})
+	/Users/maynathan/Documents/code/language/go/api/main.go:38 +0x278
+main.save({0x10103e5f0, 0x14000268000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:81 +0x22c
+net/http.HandlerFunc.ServeHTTP(0x140001e2a98?, {0x10103e5f0?, 0x14000268000?}, 0x100f49524?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400013600b?, {0x10103e5f0, 0x14000268000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x10103db38?}, {0x10103e5f0, 0x14000268000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x140000b8320, {0x10103ea40, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 15:54:30 retrieve endpoint hit [::1]:53383
+2023/01/26 15:54:30 retrieve endpoint done [::1]:53383
+2023/01/26 15:59:16 save endpoint hit [::1]:53519
+2023/01/26 15:59:16 failed to create file: open ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 15:59:16 http: panic serving [::1]:53519: open ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 66 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x1010072c0, 0x1400011ce40})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:108
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:114
+main.save_file({0x14002c8c000, 0x607e78, 0x607e78}, {0x14000130340?, 0x1400005c9c8?}, {0x14000130338?, 0x1011b2940?}, {0x14000136150?, 0x1400005c9c8?})
+	/Users/maynathan/Documents/code/language/go/api/main.go:38 +0x278
+main.save({0x10103e5f0, 0x140000bc000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:81 +0x22c
+net/http.HandlerFunc.ServeHTTP(0x1400005ca98?, {0x10103e5f0?, 0x140000bc000?}, 0x100f49524?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400013614b?, {0x10103e5f0, 0x140000bc000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x10103db38?}, {0x10103e5f0, 0x140000bc000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013a320, {0x10103ea40, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 15:59:16 retrieve endpoint hit [::1]:53520
+2023/01/26 15:59:16 retrieve endpoint done [::1]:53520
+2023/01/26 15:59:22 Server started on port 8080
+2023/01/26 15:59:25 save endpoint hit [::1]:53527
+2023/01/26 15:59:25 failed to create file: open ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 15:59:25 http: panic serving [::1]:53527: open ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x104bef2c0, 0x1400011c840})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.save_file({0x14002a8c000, 0x607e78, 0x607e78}, {0x14000018180?, 0x1400005f9c8?}, {0x14000018190?, 0x104d9a940?}, {0x14000136310?, 0x1400005f9c8?})
+	/Users/maynathan/Documents/code/language/go/api/main.go:38 +0x278
+main.save({0x104c265f0, 0x14000194000}, 0x1400018a000)
+	/Users/maynathan/Documents/code/language/go/api/main.go:81 +0x22c
+net/http.HandlerFunc.ServeHTTP(0x14000147a98?, {0x104c265f0?, 0x14000194000?}, 0x104b31524?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400013630b?, {0x104c265f0, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x104c25b38?}, {0x104c265f0, 0x14000194000}, 0x1400018a000)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013aa00, {0x104c26a40, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 15:59:25 retrieve endpoint hit [::1]:53528
+2023/01/26 15:59:25 failed to check if file exists: stat ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+2023/01/26 15:59:25 http: panic serving [::1]:53528: stat ./data/data_mart/test-document/test-large-size.pdf: no such file or directory
+goroutine 10 [running]:
+net/http.(*conn).serve.func1()
+	/usr/local/go/src/net/http/server.go:1850 +0xb0
+panic({0x104bef2c0, 0x1400011d170})
+	/usr/local/go/src/runtime/panic.go:890 +0x258
+main.logAndKill(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:117
+main.must(...)
+	/Users/maynathan/Documents/code/language/go/api/main.go:123
+main.retrieve({0x104c265f0, 0x140001940e0}, 0x1400018a100)
+	/Users/maynathan/Documents/code/language/go/api/main.go:102 +0x230
+net/http.HandlerFunc.ServeHTTP(0x1400005dad8?, {0x104c265f0?, 0x140001940e0?}, 0x0?)
+	/usr/local/go/src/net/http/server.go:2109 +0x38
+net/http.(*ServeMux).ServeHTTP(0x1400014a1ee?, {0x104c265f0, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2487 +0x140
+net/http.serverHandler.ServeHTTP({0x1400011d050?}, {0x104c265f0, 0x140001940e0}, 0x1400018a100)
+	/usr/local/go/src/net/http/server.go:2947 +0x2c4
+net/http.(*conn).serve(0x1400013a280, {0x104c26a40, 0x1400011cd80})
+	/usr/local/go/src/net/http/server.go:1991 +0x560
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:3102 +0x444
+2023/01/26 16:00:43 save endpoint hit [::1]:53538
+2023/01/26 16:00:43 save endpoint done [::1]:53538
+2023/01/26 16:00:43 retrieve endpoint hit [::1]:53539
+2023/01/26 16:00:43 retrieve endpoint done [::1]:53539
