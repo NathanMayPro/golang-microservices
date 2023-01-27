@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"golang-microservices/customlog" // import loggers package
 )
 
 type Document struct {
@@ -54,7 +56,7 @@ func save_file(decoded []byte, filename string, extension string, path string) e
 	return err
 }
 
-func save(w http.ResponseWriter, r *http.Request) {
+func save(w http.ResponseWriter, r *http.Request) (Response, error) {
 	// log activity
 	log.Printf("save endpoint hit %v", r.RemoteAddr)
 
@@ -64,7 +66,10 @@ func save(w http.ResponseWriter, r *http.Request) {
 	// if path is not empty
 	if path == "" {
 		log.Printf("endpoint:homepage hit %v", r.RemoteAddr)
-		return
+		return Response{
+			Status:  400,
+			Message: "You must provide a path.",
+		}, nil // to stop the execution of the function
 	}
 
 	// Declare a new Document struct.
@@ -74,55 +79,68 @@ func save(w http.ResponseWriter, r *http.Request) {
 	// respond to the client with the error message and a 400 status code.
 	err := json.NewDecoder(r.Body).Decode(&d)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
+		return Response{
+			Status:  400,
+			Message: "Invalid request payload",
+		}, nil
 	}
-
 	// decode base64 string
 	decoded, err := base64.StdEncoding.DecodeString(d.Content)
 	if err != nil {
-		log.Fatal(err)
+		return Response{
+			Status:  400,
+			Message: "Invalid request payload",
+		}, nil // to stop the execution of the function
 	}
 
 	// save file
 	err = save_file(decoded, d.Filename, d.Extension, path)
 
-	must(err, "save file")
+	if err != nil {
+		return Response{
+			Status:  400,
+			Message: "Internal file save error",
+		}, nil // to stop the execution of the function
+	}
 
 	log.Printf("save endpoint done %v", r.RemoteAddr)
+	return Response{
+		Status:  200,
+		Message: "success",
+	}, nil
+
 }
 
 func retrieve(w http.ResponseWriter, r *http.Request) (Response, error) {
 	// log activity
 	log.Printf("retrieve endpoint hit %v", r.RemoteAddr)
 
-	//init response
-	//var response Response
-
 	// check if there is a path as query parameter
 	path := r.URL.Query().Get("path") // http://localhost:8080/retrieve?path=/home/username
-	// w = context.WithValue(w, "result", v)
 	// if path is empty
-	//if path == "" {
-	// ctx := r.Context()
-	// req := r.WithContext(context.WithValue(ctx, "error", "Something went wrong"))
-	// //req =
-	// *r = *req
-	// to pass the context to the middleware
-	//responseMiddleware(http.HandlerFunc(homepage)).ServeHTTP(w, r)
-	return Response{
-		Status:  400,
-		Message: "path is empty",
-	}, nil // to stop the execution of the function
-	//}
+	if path == "" || len(path) == 0 {
+		return Response{
+			Status:  400,
+			Message: "You must provide a path.",
+		}, nil // to stop the execution of the function
+	}
 
 	// check if file exists
 	fileInfo, error := os.Stat(path)
-	must(error, "check if file exists")
+	if error != nil {
+		return Response{
+			Status:  400,
+			Message: "File does not exist.",
+		}, nil // to stop the execution of the function
+	}
 
 	// check if file is a directory
 	if fileInfo.IsDir() {
-		logAndKill(nil, "file is a directory")
+		return Response{
+			Status:  400,
+			Message: "Filepath is a directory.",
+		}, nil // to stop the execution of the function
+
 	}
 
 	// open file using READ & WRITE permission
@@ -150,60 +168,41 @@ type customHandler func(w http.ResponseWriter, r *http.Request) (Response, error
 
 func responseMiddleware(next customHandler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Define a struct to hold the response
-		//var response Response
-		// Call the next handler and capture the response
+		// Call the custom handler
 		response, err := next(w, r)
+		// check the response
 		if err != nil {
 			json.NewEncoder(w).Encode(Response{
 				Status:  500,
 				Message: "internal server error",
 			})
-		} else {
-			json.NewEncoder(w).Encode(Response{
-				Status:  response.Status,
-				Message: response.Message,
-			})
+			customlog.NewLog("Internal server error.", r)
 		}
-		// // Set the response struct with the desired values
-		// // check inside the context if there is an error
-		// if err := r.Context().Value("error"); err != nil {
-		// 	fmt.Print("I'm here")
-		// 	response.Status = r.Context().Value("status").(int)
-		// 	response.Message = err.(string)
-		// 	// Write the response as JSON
-		// 	w.Header().Set("Content-Type", "application/json")
-		// 	json.NewEncoder(w).Encode(response)
-		// 	return
-		// } else {
-		// 	fmt.Print("I'm also here")
-		// 	response.Status = 200
-		// 	response.Message = "success"
-		// 	// Write the response as JSON
-		// 	w.Header().Set("Content-Type", "application/json")
-		// 	json.NewEncoder(w).Encode(response)
+		//in case of success return the respons of the handler
+		json.NewEncoder(w).Encode(Response{
+			Status:  response.Status,
+			Message: response.Message,
+		})
+		customlog.NewLog(response.Message, r)
 
 	})
 }
 
 func main() {
-	// set up the log file
-	file, err := os.OpenFile("./logging/api.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+	// // set up the log file
+	// file, err := os.OpenFile("./logging/api.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
 
-	must(err, "open log file")
+	// must(err, "open log file")
 
 	// set the output of the logs to be the file
-	log.SetOutput(file)
+	// log.SetOutput(file)
 
-	defer file.Close()
+	// defer file.Close()
 
 	mux := http.NewServeMux()
 	// mux.Handle("/", responseMiddleware(homepage))
 	// mux.Handle("/save", responseMiddleware(http.HandlerFunc(save)))
 	mux.Handle("/retrieve", responseMiddleware(retrieve))
-
-	// log activity
-	log.Printf("Server started on port 8080\n")
 
 	errServer := http.ListenAndServe(":8080", mux)
 	must(errServer, "start server")
