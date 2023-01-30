@@ -13,3 +13,15 @@ type Response struct {
 	Message string `json:"message"`
 	//Data    interface{} `json:"data"`
 }
+
+type DatbaseTableUser struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Usertype string `json:"usertype"`
+}
+
+type DatabaseTableLogs struct {
+	Username string `json:"username"`
+	Ip       string `json:"ip"`
+	Endpoint string `json:"endpoint"`
+}
